@@ -1,0 +1,6 @@
+/ShowControl GameOperator/bin
+/ShowControl GameOperator/obj
+/WeakestLink-GameShow-Vb/bin/Debug
+/WeakestLink-GameShow-Vb/obj/Debug
+*.user
+*.suo
