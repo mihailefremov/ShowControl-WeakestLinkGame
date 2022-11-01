@@ -14,5 +14,8 @@
     <Setting Name="headToHeadmoneyTreeFlashTempl" Type="System.String" Scope="User">
       <Value Profile="(Default)">weakestLink/WeakestLinkFinal_v1</Value>
     </Setting>
+    <Setting Name="DatabaseType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Mock</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

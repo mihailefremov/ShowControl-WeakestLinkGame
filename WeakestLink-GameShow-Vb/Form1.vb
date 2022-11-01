@@ -3,7 +3,7 @@ Public Class QuizOperator
 
     Public Shared CurrentRound As Integer
 
-    Public GameDatabase As New GameDatabasе()
+    Public GameDatabase As IGameDatalayer
     Public MoneyTree As New MoneyTree()
     Public Contestant As New Contestant()
     Public Statistics As New Statistics()
@@ -12,8 +12,13 @@ Public Class QuizOperator
     Public CG As New CharacterGenerator()
 
     Private Sub QuizOperator_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If My.Settings.DatabaseType.Contains("Mock") Then
+            GameDatabase = New MockDatabase()
+        Else
+            GameDatabase = New GameDatabasе()
+        End If
 
-        ProducerQuestionPreset.Show()
+        'ProducerQuestionPreset.Show()
         CG.MoneyTreeSet()
         CG.HeadToHeadSet()
 

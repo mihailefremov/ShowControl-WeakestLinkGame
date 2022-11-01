@@ -8,7 +8,7 @@ Public Class Clock
     Public WithEvents Timer_secondPassed As New System.Windows.Forms.Timer
     Public WithEvents Timer_statisticsReveal As New System.Windows.Forms.Timer
 
-    Dim SoundFolderPath As String = "C:\Weakest Link\Sounds\"
+    Dim SoundFolderPath As String = "D:\Weakest Link\Sounds\"
     Dim SoundName As String = ""
 
     Sub New()

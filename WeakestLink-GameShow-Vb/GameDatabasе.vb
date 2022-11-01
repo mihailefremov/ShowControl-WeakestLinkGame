@@ -1,6 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class GameDatabasе
+    Implements IGameDatalayer
 
     Public Shared CurrentRound As Integer
     Public Shared PreSetQuestionString As String = ""
@@ -12,33 +13,22 @@ Public Class GameDatabasе
                & "database=" + "weakestlink" + ";" _
                & "Character Set=utf8;"
 
-    Public Sub SetContestantsData(ByVal Position As Integer, ByVal Name As String)
-
-
+    Public Sub SetContestantsData(ByVal Position As Integer, ByVal Name As String) Implements IGameDatalayer.SetContestantsData
     End Sub
 
-    Public Sub UpdateContestantsData(ByVal Position As Integer, ByVal Name As String, ByVal Correct As Integer, ByVal Incorrect As Integer, ByVal Banks As Integer, ByVal Points As Decimal)
-
-
+    Public Sub UpdateContestantsData(ByVal Position As Integer, ByVal Name As String, ByVal Correct As Integer, ByVal Incorrect As Integer, ByVal Banks As Integer, ByVal Points As Decimal) Implements IGameDatalayer.UpdateContestantsData
     End Sub
 
-    Public Sub GetContestantsData(ByVal Position As Integer)
-
-
+    Public Sub GetContestantsData(ByVal Position As Integer) Implements IGameDatalayer.GetContestantsData
     End Sub
 
-    Public Sub UpdateContestantStatistics(ByVal Position As Integer)
-
-
+    Public Sub UpdateContestantStatistics(ByVal Position As Integer) Implements IGameDatalayer.UpdateContestantStatistics
     End Sub
 
-    Public Sub GetActiveContestants()
-
-
+    Public Sub GetActiveContestants() Implements IGameDatalayer.GetActiveContestants
     End Sub
 
-    Public Sub GetPreSetQuestion(ByVal RoundNumber As Integer, ByVal Contestant As Integer)
-
+    Public Sub GetPreSetQuestion(ByVal RoundNumber As Integer, ByVal Contestant As Integer) Implements IGameDatalayer.GetPreSetQuestion
         RemoveOldQuestion()
         PreSetQuestionString = "SELECT * FROM questionsforcontestants WHERE Answered=0 and Round=" + RoundNumber.ToString + " and (CASE WHEN (SELECT COUNT(*) FROM questionsforcontestants WHERE ContestantID=" + Contestant.ToString + " LIMIT 1) > 0 THEN (ContestantID=" + Contestant.ToString + ")" + " ELSE 1=2 END)"
         ''ako nema prasanje za takmicar od rundata togas najdi bilo koe prasanje od rundata
@@ -79,7 +69,7 @@ Public Class GameDatabasе
 
     End Sub
 
-    Public Sub MarkPreSetQuestionOpened()
+    Public Sub MarkPreSetQuestionOpened() Implements IGameDatalayer.MarkPreSetQuestionOpened
         Dim MySqlConn As MySqlConnection
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = gamequestionsConnection
@@ -105,7 +95,7 @@ Public Class GameDatabasе
 
     End Sub
 
-    Public Sub MarkQuestionAnswered()
+    Public Sub MarkQuestionAnswered() Implements IGameDatalayer.MarkQuestionAnswered
         Dim MySqlConn As MySqlConnection
         MySqlConn = New MySqlConnection
         MySqlConn.ConnectionString = gamequestionsConnection
@@ -131,7 +121,7 @@ Public Class GameDatabasе
 
     End Sub
 
-    Public Sub RemoveOldQuestion()
+    Public Sub RemoveOldQuestion() Implements IGameDatalayer.RemoveOldQuestion
         QuizOperator.CurrentQuestionText_TextBox.Text = ""
         QuizOperator.CurrentAnswerText_TextBox.Text = ""
         'QuizOperator.InfoBox_Textbox.Text = ""

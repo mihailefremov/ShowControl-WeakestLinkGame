@@ -95,7 +95,9 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MockDatabase.vb" />
     <Compile Include="GameDatabasе.vb" />
+    <Compile Include="IGameDatalayer.vb" />
     <Compile Include="MoneyTree.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
